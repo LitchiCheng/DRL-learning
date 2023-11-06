@@ -7,6 +7,11 @@
 
 `pip3 install tensorflow -i https://pypi.douban.com/simple`
 
+`pip3 install scipy -i https://pypi.douban.com/simple`
+
+`pip3 install torch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 -i https://pypi.douban.com/simple`
+
+
 ## 问题
 >AttributeError: 'CartPoleEnv' object has no attribute 'seed'
 
