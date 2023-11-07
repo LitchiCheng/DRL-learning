@@ -8,6 +8,7 @@ probs = np.random.rand(n)
 record = np.zeros((n,2))
 
 def softmax(av, tau=1.12):
+    # 概率相加为1，tau越大，概率就相近不好区分
     softm = ( np.exp(av / tau) / np.sum( np.exp(av / tau) ) )
     return softm
 
@@ -35,6 +36,8 @@ fig.set_size_inches(9,5)
 rewards = [0]
 for i in range(500):
     p = softmax(record[:,1],tau=0.7)
+    # np.random.choice，np.arange(n)表示10个臂的序号列表，
+    # p是根据平均奖励的概率分布，random.choice会从a中较多的选择对应p概率高的
     choice = np.random.choice(np.arange(n),p=p)
     r = get_reward(probs[choice])
     record = update_record(record,choice,r)
