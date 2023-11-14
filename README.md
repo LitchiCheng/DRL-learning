@@ -11,6 +11,8 @@
 
 `pip3 install torch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 -i https://pypi.douban.com/simple`
 
+Gridwold.py模块依赖GridBoard.py
+
 
 ## 问题
 >AttributeError: 'CartPoleEnv' object has no attribute 'seed'

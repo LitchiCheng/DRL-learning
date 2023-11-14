@@ -43,7 +43,7 @@ fig.set_size_inches(9,5)
 rewards = [0]
 for i in range(500):
     if random.random() > eps:
-        # 随机概率大于0.2，就从过去经验数据中取出平均奖励最高的动作
+        # 随机概率大于0.1，就从过去经验数据中取出平均奖励最高的动作
         choice = get_best_arm(record)
     else:
         # 否则随机选一个动作

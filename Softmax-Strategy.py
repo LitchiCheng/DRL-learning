@@ -35,7 +35,7 @@ ax.set_ylabel("Avg Reward")
 fig.set_size_inches(9,5)
 rewards = [0]
 for i in range(500):
-    p = softmax(record[:,1],tau=0.7)
+    p = softmax(record[:,1],tau=1.12)
     # np.random.choice，np.arange(n)表示10个臂的序号列表，
     # p是根据平均奖励的概率分布，random.choice会从a中较多的选择对应p概率高的
     choice = np.random.choice(np.arange(n),p=p)
