@@ -127,5 +127,5 @@ class Gridworld:
             return -1
 
     def display(self):
-        print(self.board.render())
+        # print(self.board.render())
         return self.board.render()
