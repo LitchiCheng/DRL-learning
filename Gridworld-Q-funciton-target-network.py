@@ -83,7 +83,7 @@ for i in range(epochs):
             
             Q1 = model(state1_batch) #L重新计算小批量的Q值，得到梯度
             with torch.no_grad():
-                Q2 = model(state2_batch) #M计算下一状态的Q值，不计算梯度
+                Q2 = model2(state2_batch) #M计算下一状态的Q值，不计算梯度
             
             Y = reward_batch + gamma * ((1 - done_batch) * torch.max(Q2,dim=1)[0]) #N计算目标Q值
             X = Q1.gather(dim=1,index=action_batch.long().unsqueeze(dim=1)).squeeze() #gather函数可以通过动作索引获取Q1张量的子集，这样只选择与实际被选择动作相关的Q值
