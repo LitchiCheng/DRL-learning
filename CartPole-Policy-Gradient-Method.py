@@ -48,34 +48,24 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 env = gym.make("CartPole-v1")
 
-# 需要增加info
-state1, info = env.reset()
-#出现了这个问题：TypeError: expected np.ndarray (got tuple)，说明这个torch.from_numpy(state1)时元组
-print(torch.from_numpy(state1).float())
-pred = model(torch.from_numpy(state1).float()) #G
-action = np.random.choice(np.array([0,1]), p=pred.data.numpy()) #H
-#出现了这个问题：ValueError: too many values to unpack (expected 4)
-print(env.step(action))
-state2, reward, done, none, info = env.step(action) #I
-
-#G Call policy network model to produce predicted action probabilities
-#H Sample an action from the probability distribution produced by the policy network
-#I Take the action, receive new state and reward. The info variable is produced by the environment but is irrelevant
-
 MAX_DUR = 200
 MAX_EPISODES = 500
 gamma = 0.99
 score = [] #A
 expectation = 0.0
 for episode in range(MAX_EPISODES):
+    # 需要增加info
     curr_state, info = env.reset()
     done = False
     transitions = [] #B
     
     for t in range(MAX_DUR): #C
+        #出现了这个问题：TypeError: expected np.ndarray (got tuple)，说明这个torch.from_numpy(state1)时元组
         act_prob = model(torch.from_numpy(curr_state).float()) #D
         action = np.random.choice(np.array([0,1]), p=act_prob.data.numpy()) #E
         prev_state = curr_state
+        #出现了这个问题：ValueError: too many values to unpack (expected 4)
+        # env.step返回的元组格式（下一状态，奖励，是否完成，是否终止，信息）
         curr_state, _, done, none,info = env.step(action) #F
         transitions.append((prev_state, action, t+1)) #G
         if done: #H
