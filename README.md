@@ -4,6 +4,10 @@
 
 [DQN 玩 2048 实战｜第一期！搭建游戏环境（附 PyGame 可视化源码）](https://www.bilibili.com/video/BV1bGQDYbEPp/?vd_source=5ba34935b7845cd15c65ef62c64ba82f)
 
+### DQN-2048/trainv1.py
+
+[DQN 玩 2048 实战｜第二期！设计 ε 贪心策略神经网络，简单训练一下吧！](https://www.bilibili.com/video/BV1xWQaYMEEs/?vd_source=5ba34935b7845cd15c65ef62c64ba82f)
+
 ## 库
 `pip3 install numpy -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple`
 
